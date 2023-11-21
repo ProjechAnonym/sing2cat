@@ -18,5 +18,7 @@ singbox支持出站覆写IP和端口,基于此编写配置文件的出站和路�
 * 访问url:http://ip:9090
 clashAPI的支持使得singbox可以任意切换节点,这在看流媒体的时候很有意义
 ## 关于编译
-使用python写的代码,pyinstaller打包的,mac用户需要自行打包一下,作者过于贫穷买不起mac,虚拟机又非常卡于是就把mac程序暂时不列入考虑范围
+使用python写的代码,pyinstaller打包的,mac用户需要自行打包一下,作者过于贫穷买不起mac,虚拟机又非常卡于是就把mac程序暂时不列入考虑范围,mac用户需要编译的话下载main.spec文件,修改pathex和hiddenimports,另外python需要安装有yaml和pyside6包。
+* pathex = ["你的项目路径"]
+* hiddenimports = ["你的项目路径/Gui","你的项目路径/jsProcess"]
 
