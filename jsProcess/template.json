@@ -1,0 +1,82 @@
+{
+  "inbound": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "inet4_address": "172.19.0.1/30",
+      "mtu": 1500,
+      "auto_route": true,
+      "strict_route": false,
+      "stack": "gvisor",
+      "sniff": true,
+      "sniff_override_destination": false
+    }
+  ],
+  "log": {
+    "disabled": false,
+    "level": "info",
+    "output": "/var/singbox/box.log",
+    "timestamp": true
+  },
+  "ss": {
+    "type": "shadowsocks",
+    "tag": "",
+    "server": "",
+    "server_port": "",
+    "method": "",
+    "password": ""
+  },
+  "vmess": {
+    "type": "vmess",
+    "tag": "",
+    "server": "",
+    "server_port": "",
+    "uuid": "",
+    "security": "auto",
+    "transport": {
+      "type": "ws",
+      "path": "/",
+      "early_data_header_name": "Sec-WebSocket-Protocol"
+    }
+  },
+  "trojan": {
+    "type": "trojan",
+    "tag": "",
+    "server": "",
+    "server_port": "",
+    "password": "",
+    "tls": {
+      "enabled": true,
+      "disable_sni": false,
+      "server_name": "",
+      "insecure": true
+    }
+  },
+  "geoip": {
+    "download_url": "https://github.com/soffchen/sing-geoip/releases/latest/download/geoip.db",
+    "download_detour": "select"
+  },
+  "geosite": {
+    "download_url": "https://github.com/soffchen/sing-geosite/releases/latest/download/geosite.db",
+    "download_detour": "select"
+  },
+  "dns": { "protocol": "dns", "outbound": "dns-out" },
+  "quic": { "protocol": ["quic"], "outbound": "block" },
+  "foreign": {
+    "type": "logical",
+    "mode": "and",
+    "rules": [
+      { "geosite": ["geolocation-!cn"] },
+      { "geoip": ["cn"], "invert": true }
+    ],
+    "outbound": "select"
+  },
+  "cn": {
+    "type": "logical",
+    "mode": "and",
+    "rules": [{ "geosite": ["cn"] }, { "geoip": ["cn"] }],
+    "outbound": "direct"
+  },
+  "site_private": { "geosite": ["private"], "outbound": "direct" },
+  "ip_private": { "geoip": ["cn", "private"], "outbound": "direct" }
+}

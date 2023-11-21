@@ -31,6 +31,8 @@ def vmessJson(node):
     vmess["uuid"] = node["uuid"]
     if "ws-path" in node.keys():
         vmess["transport"]["path"] = node["ws-path"]
+    if "ws-headers" in node.keys():
+        vmess["transport"]["headers"] = node["ws-headers"]
     return vmess
 def trojanJson(node):
     trojan["tag"] = node["name"]
