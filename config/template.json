@@ -36,6 +36,7 @@
     "transport": {
       "type": "ws",
       "path": "/",
+      "headers": {},
       "early_data_header_name": "Sec-WebSocket-Protocol"
     }
   },
