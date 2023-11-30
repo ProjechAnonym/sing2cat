@@ -1,4 +1,4 @@
-from PySide6 import QtWidgets
+from PySide6 import QtWidgets,QtGui
 import sys
 from Gui import FileZone as fz
 from Gui import DnsZone as dz
@@ -94,5 +94,6 @@ class MainWindow(QtWidgets.QWidget):
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])  # 创建APP，将运行脚本时（可能的）的其他参数传给Qt以初始化
     widget = MainWindow()  # 实例化一个MyWidget类对象
+    widget.setWindowIcon(QtGui.QIcon(r".\static\icon.ico"))
     widget.show()  # 显示窗口
     sys.exit(app.exec()) 
