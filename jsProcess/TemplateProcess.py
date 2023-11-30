@@ -1,6 +1,6 @@
 import json
 def loadTemplate():
-    with open(r'.\config\template.json','r',encoding="utf-8") as f:
+    with open(r'.\static\config\template.json','r',encoding="utf-8") as f:
         template = json.load(f)
     return template
 template = loadTemplate()
