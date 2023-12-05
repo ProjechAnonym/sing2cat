@@ -1,5 +1,5 @@
 {
-  "inbound": [
+  "inbounds": [
     {
       "type": "tun",
       "tag": "tun-in",

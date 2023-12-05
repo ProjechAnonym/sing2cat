@@ -7,7 +7,7 @@ class HostField(QtWidgets.QWidget):
         self.initui()
     def initui(self):
         self.hostinfo = QtWidgets.QPlainTextEdit()
-        self.hostinfo.setPlaceholderText("格式:域名,IP,端口.使用逗号分割,多个域名劫持请换行\n如clash.com,192.168.50.1,9090\nadhome.com,192.168.50.1,3000")
+        self.hostinfo.setPlaceholderText("格式:域名,IP,端口.使用逗号分割,多个域名劫持请换行\nclash.com,192.168.50.1,9090\nadhome.com,192.168.50.1,3000")
         self.hostinfo.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAsNeeded)
         self.custom_host = QtWidgets.QRadioButton("是否启用HOST劫持")
         self.custom_host.toggled.connect(self.SetEditLine)

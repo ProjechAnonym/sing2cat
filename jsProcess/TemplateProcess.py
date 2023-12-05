@@ -4,7 +4,7 @@ def loadTemplate():
         template = json.load(f)
     return template
 template = loadTemplate()
-inbound = template["inbound"]
+inbound = template["inbounds"]
 log = template["log"]
 ss = template["ss"]
 vmess = template["vmess"]

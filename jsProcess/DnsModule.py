@@ -26,19 +26,15 @@ def DNSserver(DNS_list):
       }]
 def DNScache(ttl):
     return [
-      {
-        "geosite": ["category-ads-all"],
-        "server": "dns_block",
-        "disable_cache": True
-      },
       { "outbound": "any", "server": "proxy_search" },
       {
-        "geosite": ["cn", "private"],
+        "rule_set": "geosite_cn",
         "server": "internal",
         "rewrite_ttl": ttl
       },
       {
-        "geosite": ["geolocation-!cn"],
+        "rule_set": "geosite_cn",
+        "invert":True,
         "server": "external",
         "rewrite_ttl": ttl
       }

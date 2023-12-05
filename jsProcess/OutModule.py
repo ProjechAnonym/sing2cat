@@ -2,11 +2,27 @@ import yaml
 from . import TemplateProcess as tp
 from . import ProcessHyjack
 import re
+import requests
+import global_var as glv
 def loadNodes(yaml_path):
     with open(f"{yaml_path}",encoding="utf-8") as f:
         yaml_file = yaml.load(f,yaml.BaseLoader)
         nodes = yaml_file['proxies']
     return nodes
+def downloadNodes(url):
+    clash_tag = True
+    args = re.split(r"\?|&",url)
+    for arg in args:
+        if re.search("clash",arg):
+            clash_tag = False
+    if clash_tag:
+        url = url + "&flag=clash"
+    headers = {'User-Agent':'Mozilla/5.0 3578.98 Safari/537.36'}
+    response = requests.get(url,headers=headers)
+    if response.status_code == 200:
+        return yaml.load(response.content.decode("utf-8"),yaml.BaseLoader)["proxies"]
+    else:
+        return False
 def Yaml2Json(nodes):
     node_tag = [None]*len(nodes)
     node_json = [None]*len(nodes)
@@ -40,9 +56,9 @@ def selectOut(out_tags):
             "default": "auto",
             "interrupt_exist_connections": False
            }
-def MergeOutJson(yaml_path,hyjack,ips,ports):
-    nodes_yaml = loadNodes(yaml_path)
-    [nodes_json,nodes_tag] = Yaml2Json(nodes_yaml)
+def MergeOutJson(hyjack,ips,ports):
+    # nodes_yaml = loadNodes(yaml_path)
+    [nodes_json,nodes_tag] = Yaml2Json(glv.get_value("nodes"))
     auto_out = autoOut(nodes_tag)
     select_out = selectOut(nodes_tag)
     if hyjack:
