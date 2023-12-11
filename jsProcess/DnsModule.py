@@ -28,12 +28,12 @@ def DNScache(ttl):
     return [
       { "outbound": "any", "server": "proxy_search" },
       {
-        "rule_set": "geosite_cn",
+        "rule_set": "geosite-cn",
         "server": "internal",
         "rewrite_ttl": ttl
       },
       {
-        "rule_set": "geosite_cn",
+        "rule_set": "geosite-cn",
         "invert":True,
         "server": "external",
         "rewrite_ttl": ttl
