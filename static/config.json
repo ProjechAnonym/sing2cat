@@ -1,0 +1,12 @@
+{
+  "url": ["https://link.onesy.link/link/xQ3S0L9btfgTprvs?clash=3"],
+  "rule_set": {
+    "A": { "type": "local", "path": "/usr/", "china": true },
+    "B": { "type": "remote", "url": "sas", "china": false }
+  },
+  "dns_list": {
+    "internal": ["https://223.5.5.5/dns-query"],
+    "external": ["https://8.8.8.8/dns-query"],
+    "nodes_dns": ["https://1.1.1.1/dns-query"]
+  }
+}
