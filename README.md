@@ -25,3 +25,6 @@ clashAPI的支持使得singbox可以任意切换节点,这在看流媒体的时�
 * pathex = ["你的项目路径"]
 * hiddenimports = ["你的项目路径/Gui","你的项目路径/jsProcess"]
 
+# 注意!!!
+此版本为linux版本,没有GUI界面,使用的时候进入对应文件夹,然后命令行输入sing2cat.exe --path=保存路径即可
+
